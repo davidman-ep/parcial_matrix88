@@ -1,0 +1,79 @@
+const int SER = 8;
+const int RCLK = 11;
+const int SRCLK = 12;
+#define TIEMPO 11
+
+void reloj1(int cl1);
+void reloj2(int cl2);
+void setup()
+{	
+  //paso 1: configuracion de puertos digitales como salida
+  	pinMode(SER, OUTPUT );
+  	pinMode(RCLK, OUTPUT );
+  	pinMode(SRCLK, OUTPUT );
+  		//inicializar en bajo
+  	digitalWrite(SER,0);
+    digitalWrite(RCLK,0);
+  	digitalWrite(SRCLK,0);
+
+  
+  int bits[64]={0,1,1,1,1,1,1,0,
+		        1,1,1,1,1,1,1,1,
+		        1,1,1,0,0,1,1,1,
+		        1,1,1,0,0,1,1,1,
+		        1,1,1,1,1,1,1,1,
+		        1,1,1,1,1,1,1,1,
+		        1,1,1,0,0,1,1,1,
+		        1,1,1,0,0,1,1,1};
+  
+  /*int bits[64]={0,0,0,0,0,0,0,0,
+                  0,0,1,0,0,1,0,0,
+                  0,1,1,1,1,1,1,0,
+                  0,1,1,1,1,1,1,0,
+                  0,1,1,1,1,1,1,0,
+                  0,0,1,1,1,1,0,0,
+                  0,0,0,1,1,0,0,0,
+                 0,0,0,0,0,0,0,0};
+                  
+                  0,1,1,0,0,1,1,0,
+                  1,1,1,1,1,1,1,1,
+                  1,1,1,1,1,1,1,1,
+                  1,1,1,1,1,1,1,1,
+                  1,1,1,1,1,1,1,1,
+                  0,1,1,1,1,1,1,0,
+                  0,0,1,1,1,1,0,0,
+                  0,0,0,1,1,0,0,0};*/
+  
+     int i=0;
+     while(i<64){
+        int aux=bits[i];
+        digitalWrite(SER,aux);
+
+      	reloj1(SRCLK);
+      	reloj2(RCLK);
+       
+        
+        
+       i++;
+    }       
+  	delay(TIEMPO);
+}
+
+void loop()
+{
+   
+}
+
+void reloj1 (int cl1){
+  digitalWrite(cl1,0);
+  digitalWrite(cl1,1);
+  digitalWrite(cl1,0);
+}
+void reloj2 (int cl2){
+  digitalWrite(cl2,0);
+  digitalWrite(cl2,1);
+  digitalWrite(cl2,0);
+}
+  
+
+
