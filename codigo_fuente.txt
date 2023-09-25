@@ -85,7 +85,10 @@ void loop()
   	Serial.print("n:publik\n");
   	Serial.print("**************\n");  
   	Serial.print("ingrese opcion: ");
-  }  
+  }
+  
+  liberarMatriz(matriz);
+  matriz=new boolean *[8];
 }
 
 void publik(){ 
