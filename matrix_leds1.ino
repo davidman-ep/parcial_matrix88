@@ -245,3 +245,5 @@ void reloj (int c){
   digitalWrite(c,0);
 }
 
+
+
